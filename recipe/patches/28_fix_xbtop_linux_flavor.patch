@@ -1,0 +1,20 @@
+--- orig/src/runtime_src/core/tools/xbtop/CMakeLists.txt	2026-09-01 23:01:22
++++ work/src/runtime_src/core/tools/xbtop/CMakeLists.txt	2026-09-01 23:01:22
+@@ -2,16 +2,9 @@
+ # Copyright (C) 2022 Xilinx, Inc. All rights reserved.
+ #
+ 
+-message(${LINUX_FLAVOR} ${LINUX_VERSION})
+-string(SUBSTRING "${LINUX_VERSION}" 0 1 major_version)
++message(STATUS "Linux flavor: ${LINUX_FLAVOR} ${LINUX_VERSION}")
+ set (PYTHON_3 TRUE)
+ 
+-if (${LINUX_FLAVOR} STREQUAL "Amazon")
+-  set (PYTHON_3 FALSE)
+-elseif ((${LINUX_FLAVOR} STREQUAL "CentOS") AND (${major_version} STREQUAL "7"))
+-  set (PYTHON_3 FALSE)
+-endif ()
+-
+ if (${PYTHON_3})
+     install(FILES ReportDynamicRegions.py DESTINATION ${XRT_INSTALL_PYTHON_DIR})
+     install(FILES ReportMemory.py         DESTINATION ${XRT_INSTALL_PYTHON_DIR})
